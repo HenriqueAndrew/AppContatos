@@ -9,4 +9,20 @@
     <string name="nenhum_contato">Você ainda não adicionou nenhum contato.\nAdicione o primeiro utilizando o botão \"Novo Contato\"</string>
     <string name="atualizar">Atualizar</string>
     <string name="adicionar">Adicionar</string>
+    <string name="favoritar">favoritar</string>
+    <string name="voltar">voltar\n</string>
+    <string name="editar">editar</string>
+    <string name="excluir">excluir</string>
+    <string name="ligar">ligar</string>
+    <string name="texto">texto</string>
+    <string name="video">video</string>
+    <string name="email">email</string>
+    <string name="carregando">carregando</string>
+    <string name="loading_error">loading_error</string>
+    <string name="wait_and_try_again">wait_and_try_again</string>
+    <string name="try_again">try_again</string>
+    <string name="loading_contacts">loading_contacts</string>
+    <string name="confirmar">confirmar</string>
+    <string name="cancelar">cancelar</string>
+    <string name="confirmar_remover_contato">confirmar_remover_contato</string>
 </resources>
