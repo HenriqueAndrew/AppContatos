@@ -8,9 +8,22 @@ class ContactDatasource private constructor() {
         }
     }
     private val contacts: MutableList<Contact> = mutableListOf()
+    private val contactsObservers: MutableList<ContactsObserver> = mutableListOf()
+
     init {
         contacts.addAll(generateContacts())
     }
+
+    fun registerObserver(contactsObserver: ContactsObserver) {
+        contactsObservers.add(contactsObserver)
+    }
+    fun unregisterObserver(contactsObserver: ContactsObserver) {
+        contactsObservers.remove(contactsObserver)
+    }
+    private fun notifyObservers() {
+        contactsObservers.forEach { it.onUpdate(findAll()) }
+    }
+
     fun findAll(): List<Contact> = contacts.toList()
     fun findById(id: Int): Contact? = contacts.firstOrNull { it.id == id }
     fun save(contact: Contact): Contact = if (contact.id > 0) {
@@ -21,10 +34,13 @@ class ContactDatasource private constructor() {
         // inserir
         val maxId: Int = contacts.maxBy { it.id }.id
         contact.copy(id = maxId + 1).also { contacts.add(it) }
+    }.also {
+        notifyObservers()
     }
     fun delete(contact: Contact) {
         if (contact.id > 0) {
             contacts.removeIf { it.id == contact.id }
+            notifyObservers()
         }
     }
 }
